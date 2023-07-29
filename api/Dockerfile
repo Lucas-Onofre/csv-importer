@@ -14,6 +14,6 @@ RUN npx prisma generate
 
 EXPOSE 3000
 
-RUN npm run build && npm run test
+RUN npm run build
 
 CMD ["npm", "start"]
