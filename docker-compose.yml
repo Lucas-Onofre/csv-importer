@@ -1,13 +1,28 @@
-version: "3.7"
+version: "3"
+
 services:
   node-backend:
-    build: ./api
+    build:
+      context: ./api
+      dockerfile: Dockerfile
     container_name: node-backend
     restart: always
     ports:
-      - "4000:4000"
+      - "3000:3000"
+    networks:
+      - node-network
+
+  frontend:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    container_name: frontend
+    restart: always
     volumes:
-      - ./api:/usr/src/app
+      - ./ui:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
     networks:
       - node-network
 

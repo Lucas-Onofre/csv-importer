@@ -6,10 +6,6 @@ import { BaseError } from '../errors'
 
 export const listUsersService = async (query: string = ''): Promise<User[]> => {
   try {
-    if (!query) {
-      return []
-    }
-
     return await UserRepository.listUsers(query)
   } catch (error) {
     throw new BaseError({
